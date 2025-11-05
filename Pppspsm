@@ -1,0 +1,34 @@
+```import java.util.Arrays;
+import java.util.Scanner;
+
+public class svetilki {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int N = input.nextInt();
+        int M = input.nextInt();
+        int[] pos = new int[N];
+        for (int i = 0; i < N; i++) {
+            pos[i] = input.nextInt();
+        }
+        Arrays.sort(pos);
+        int cur = 1;
+        int index = 0;
+        int lamps = 0;
+        while (cur <= M) {
+            int best = Integer.MIN_VALUE;
+
+            while (index < N && pos[index] <= cur + 2) {
+                best = pos[index];
+                index++;
+            }
+            if(best == Integer.MIN_VALUE){
+                System.out.println(-1);
+                return;
+            }
+            lamps++;
+            cur= best+3;
+        }
+        System.out.println(lamps);
+    }
+}
+```
